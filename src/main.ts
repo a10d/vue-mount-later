@@ -1,5 +1,26 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+//import {createApp} from 'vue'
+import { createApp } from 'vue/dist/vue.esm-bundler';
+import ComponentA from "./components/ComponentA.vue";
+import ComponentB from "./components/ComponentB.vue";
 
-createApp(App).mount('#app')
+function mountVue(rootEl) {
+
+    const app = createApp({
+        template: rootEl.innerHTML,
+        components: {
+            ComponentA,
+            ComponentB,
+        }
+    })
+
+    app.mount(rootEl)
+
+    // app.use(pinia)
+
+    return app;
+}
+
+//export {mountVue};
+
+// mountVue über window global verfügbar machen
+window.mountVue = mountVue;

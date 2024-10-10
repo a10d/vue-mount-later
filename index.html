@@ -1,13 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Vite + Vue + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+</head>
+<body>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <div>
+
+        <!-- Dies ist Instanz in welcher Du deine Komponenten aufrufen kannst -->
+        <div id="app1">
+            <component-a></component-a>
+        </div>
+
+        <button id="mountButton1">mount A</button>
+    </div>
+    <div>
+
+
+        <!-- Dies ist eine weitere Instanz -->
+        <div id="app2">
+            <component-b></component-b>
+        </div>
+
+        <button id="mountButton2">mount B</button>
+    </div>
+</div>
+
+<script src="/src/main.ts" type="module"></script>
+
+
+<script>
+
+    // Die Funktion "mountVue" ist im main.ts definiert. Sie initialisiert
+    document.querySelector('#mountButton1').addEventListener('click', () => mountVue('#app1'));
+    document.querySelector('#mountButton2').addEventListener('click', () => mountVue('#app2'));
+
+</script>
+
+</body>
 </html>
