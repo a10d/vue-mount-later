@@ -26,11 +26,15 @@
     let app = null;
 
     document.querySelector('#mountButton').addEventListener('click', () => {
+
+
+        // Falls app var null, app erstellen und mounten
         if (!app) {
             app = mountVue('#app');
         } else {
-            app.unmount();
-            app = null;
+
+            // App unmounten, var überschreiben mit leerem wert
+            app = app.unmount();
         }
     });
 
