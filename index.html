@@ -7,26 +7,15 @@
 </head>
 <body>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-    <div>
+<div>
 
-        <!-- Dies ist Instanz in welcher Du deine Komponenten aufrufen kannst -->
-        <div id="app1">
-            <component-a></component-a>
-        </div>
-
-        <button id="mountButton1">mount A</button>
+    <div id="app">
+        <p>Inhalt</p>
+        <component-a></component-a>
+        <p>Content</p>
     </div>
-    <div>
 
-
-        <!-- Dies ist eine weitere Instanz -->
-        <div id="app2">
-            <component-b></component-b>
-        </div>
-
-        <button id="mountButton2">mount B</button>
-    </div>
+    <button id="mountButton">mount / unmount</button>
 </div>
 
 <script src="/src/main.js" type="module"></script>
@@ -34,9 +23,16 @@
 
 <script>
 
-    // Die Funktion "mountVue" ist im main.js definiert. Sie initialisiert
-    document.querySelector('#mountButton1').addEventListener('click', () => mountVue('#app1'));
-    document.querySelector('#mountButton2').addEventListener('click', () => mountVue('#app2'));
+    let app = null;
+
+    document.querySelector('#mountButton').addEventListener('click', () => {
+        if (!app) {
+            app = mountVue('#app');
+        } else {
+            app.unmount();
+            app = null;
+        }
+    });
 
 </script>
 
