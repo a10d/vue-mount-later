@@ -12,12 +12,14 @@ import ComponentB from "./components/ComponentB.vue";
  */
 function mountVue(root) {
 
+    // Sicherstellen dass root element ein element ist
+    // (Falls string übergeben, element anhand query selector holen)
     const rootElement = (typeof root === 'string')
         ? document.querySelector(root)
         : root;
 
     if (!rootElement) {
-        throw new Error('')
+        throw new Error('Root element kann nicht gefunden werden.');
     }
 
     // Template bzw. HTML vom mitgegebenen Element laden
@@ -30,7 +32,9 @@ function mountVue(root) {
             ComponentB,
         }
     })
+
     // app.use(pinia)
+    
     app.mount(rootElement)
 
     // App objekt zurückgeben mit überschriebener unmount mehtode.
